@@ -87,8 +87,10 @@ elseif (HAVE_PYTHON2)
 find_package(PythonLibs 2 REQUIRED)
 include_directories(${PYTHON_INCLUDE_DIRS})
 elseif (HAVE_PYTHON3)
-find_package(PythonLibs 3 REQUIRED)
-include_directories(${PYTHON_INCLUDE_DIRS})
+find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
+include_directories(${Python3_INCLUDE_DIRS})
+link_libraries(${Python3_LIBRARIES})
+
 endif ()
 
 if( WIN32 OR ${CMAKE_SYSTEM_NAME} STREQUAL "Linux" )

@@ -17,6 +17,10 @@ set( CMAKE_EXE_LINKER_FLAGS "-m64 -lrt" CACHE STRING "Executable link flags" FOR
 set( CMAKE_SHARED_LINKER_FLAGS "-m64 -lrt" CACHE STRING "shared link flags" FORCE )
 endif()
 
+if(MSVC)
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
+endif()
+
 if(NOT WIN32)
 find_file (FOUND_ALLOCATOR_HDR NAMES Allocator.h PATHS ${CMAKE_SOURCE_DIR}/src/C++/ NO_DEFAULT_PATH)
 if (NOT FOUND_ALLOCATOR_HDR)
